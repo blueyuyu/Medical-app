@@ -1,0 +1,58 @@
+{
+  "id": "4228769",
+  "name": "优医咨询（单色）",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9925371",
+      "name": "checked",
+      "font_class": "done",
+      "unicode": "ea54",
+      "unicode_decimal": 59988
+    },
+    {
+      "icon_id": "37158590",
+      "name": "location",
+      "font_class": "location",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "37157424",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "37156552",
+      "name": "shield",
+      "font_class": "shield",
+      "unicode": "e6e8",
+      "unicode_decimal": 59112
+    },
+    {
+      "icon_id": "37132024",
+      "name": "checked",
+      "font_class": "checked",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "37132025",
+      "name": "box",
+      "font_class": "box",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "37132027",
+      "name": "truch",
+      "font_class": "truck",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    }
+  ]
+}

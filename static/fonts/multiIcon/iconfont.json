@@ -1,0 +1,58 @@
+{
+  "id": "4186074",
+  "name": "优医咨询（多色）",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "36642941",
+      "name": "tool-03",
+      "font_class": "tool-03",
+      "unicode": "e6e8",
+      "unicode_decimal": 59112
+    },
+    {
+      "icon_id": "36642944",
+      "name": "tool-05",
+      "font_class": "tool-05",
+      "unicode": "e6e3",
+      "unicode_decimal": 59107
+    },
+    {
+      "icon_id": "36642942",
+      "name": "tool-02",
+      "font_class": "tool-02",
+      "unicode": "e6e4",
+      "unicode_decimal": 59108
+    },
+    {
+      "icon_id": "36642945",
+      "name": "tool-06",
+      "font_class": "tool-06",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "36642946",
+      "name": "tool-07",
+      "font_class": "tool-07",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "36642943",
+      "name": "tool-04",
+      "font_class": "tool-04",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "36642816",
+      "name": "tool-01",
+      "font_class": "tool-01",
+      "unicode": "e6e2",
+      "unicode_decimal": 59106
+    }
+  ]
+}
