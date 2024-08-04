@@ -7,6 +7,10 @@
 
 <script setup>
 import { http } from '@/utils/http.js';
+import { useCounterStore } from '@/stores/counter.js';
+const counterStore = useCounterStore();
+console.log(counterStore.count);
+console.log(counterStore.double);
 const getData = async () => {
   uni.utils.toast('请求');
   const res = await http.request({
