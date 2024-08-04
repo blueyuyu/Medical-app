@@ -2,17 +2,19 @@
   <view class="index">这是首屏首页</view>
   <text class="iconfont icon-done"></text>
   <text class="iconfont icon-tool-05"></text>
+  <button @click="getData">发请求</button>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      title: 'Hello'
-    };
-  },
-  onLoad() {},
-  methods: {}
+<script setup>
+import { http } from '@/utils/http.js';
+const getData = async () => {
+  const res = await http.request({
+    url: '/code',
+    method: 'GET'
+    // header: {
+    //   customHeader: '22222222'
+    // }
+  });
 };
 </script>
 
