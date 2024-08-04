@@ -8,6 +8,7 @@
 <script setup>
 import { http } from '@/utils/http.js';
 const getData = async () => {
+  uni.utils.toast('请求');
   const res = await http.request({
     url: '/code',
     method: 'GET'
