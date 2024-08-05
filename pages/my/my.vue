@@ -1,10 +1,9 @@
 <template>
-  <custom-section>我的</custom-section>
-  <view>这是我的页面</view>
+  <scroll-page backgroundColor="#f2f2f2"></scroll-page>
 </template>
 
 <script setup>
-import customSection from '@/components/custom-section.vue';
+import scrollPage from '@/components/scroll-page.vue';
 </script>
 
 <style></style>

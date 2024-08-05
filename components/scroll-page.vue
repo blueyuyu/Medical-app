@@ -1,8 +1,8 @@
 <template>
   <scroll-view
     scroll-y
+    :style="{ height: windowHeight + 'px', backgroundColor: props.backgroundColor, borderBottom: props.bottomStyle }"
     style="box-sizing: border-box"
-    :style="{ height: windowHeight ;border-bottom: props.bottomStyle}"
     refresher-enabled="props.refresherEnabled"
     :refresher-triggered="props.refresherTriggered"
     @refresherrefresh="$emit('onRefresh', $event)"
@@ -30,7 +30,8 @@ const props = defineProps({
   refresherTriggered: {
     type: Boolean,
     default: false
-  }
+  },
+  backgroundColor: String
 });
 
 defineEmits(['onRefresh', 'scrolltolower']);
