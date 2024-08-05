@@ -23,8 +23,6 @@ export const useCounterStore = defineStore(
     return { count, double, increment, decrement };
   },
   {
-    persist: {
-      paths: ['count']
-    }
+    persist: true
   }
 );

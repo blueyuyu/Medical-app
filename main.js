@@ -45,7 +45,7 @@ export function createApp() {
     createPersistedState({
       // 自定义本地存储的逻辑
       // 自定义本地存数据的名称
-      key: (id) => `__persisted__${id}`,
+      key: (id) => `__${id}`,
       storage: {
         setItem(key, value) {
           uni.setStorageSync(key, value);
