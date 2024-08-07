@@ -25,7 +25,8 @@
     {
       "path": "pages/my/my",
       "style": {
-        "navigationBarTitleText": "",
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的",
         "enablePullDownRefresh": false
       }
     }

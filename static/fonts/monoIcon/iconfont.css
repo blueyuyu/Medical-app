@@ -1,11 +1,12 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 4228769 */
+  font-family: "iconfonts";
+  /* Project id 4228769 */
   src: url('iconfont.woff2?t=1693907427785') format('woff2'),
-       url('iconfont.woff?t=1693907427785') format('woff'),
-       url('iconfont.ttf?t=1693907427785') format('truetype');
+    url('iconfont.woff?t=1693907427785') format('woff'),
+    url('iconfont.ttf?t=1693907427785') format('truetype');
 }
 
-.iconfont {
+.iconfonts {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -40,4 +41,3 @@
 .icon-truck:before {
   content: "\e6e7";
 }
-
