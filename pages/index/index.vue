@@ -3,7 +3,7 @@
   <text class="iconfont icon-done"></text>
   <text class="iconfont icon-tool-05"></text>
   <button @click="getData">发请求</button>
-  <custom-section showArrow="true" title="药品订单">全部订单</custom-section>
+  <custom-section :showArrow="true" title="药品订单">全部订单</custom-section>
 </template>
 
 <script setup>

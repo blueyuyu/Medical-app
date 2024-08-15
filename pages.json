@@ -12,7 +12,6 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
     },
     {
       "path": "pages/notify/notify",
@@ -20,13 +19,19 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
     },
     {
       "path": "pages/my/my",
       "style": {
         "navigationStyle": "custom",
         "navigationBarTitleText": "我的",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
         "enablePullDownRefresh": false
       }
     }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        for (const i in object) {
+            if (Object.prototype.hasOwnProperty.call(object, i)) {
+                const element = object[i];
+            }
+        }
+        // 举例子： 
+        // 首先，我们来计算数字 12 和 18 的最大公约数（GCD）：
+
+        // 数字 12 的约数有：1, 2, 3, 4, 6, 12
+        // 数字 18 的约数有：1, 2, 3, 6, 9, 18
+
+        // 12 和 18 共有的约数是：1, 2, 3, 6。其中最大的共有约数为 6，因此最大公约数为 6。
+
+        // 接下来，我们来计算数字 12 和 18 的最小公倍数（LCM）：
+
+        // 数字 12 的倍数有：12, 24, 36, 48, 60, ...
+        // 数字 18 的倍数有：18, 36, 54, 72, 90, ...
+
+        // 12 和 18 共有的倍数是：36。其中最小的共有倍数为 36，因此最小公倍数为 36。
+
+        // 最大公约数
+        /**
+        function GCD(a, b) {
+            if (a == 0) {
+                return b;
+            }
+
+            if (b == 0) {
+                return a;
+            }
+            if (a == 1 || b == 1) {
+                return 1;
+            }
+            function yueshuFn(c) {
+                let flag = 1;
+                const arr = []
+                while (flag < c) {
+                    if (c % flag == 0) {
+                        arr.push(flag);
+                    }
+                    flag++;
+                }
+                return arr;
+            }
+            const arrA = yueshuFn(a)
+            const arrB = yueshuFn(b)
+
+            function findCommonMaxCount(arr1, arr2) {
+                let max = 0;
+                arr1.forEach(item => {
+                    console.log('item', item);
+                    if (arr2.find(i => i == item) !== undefined && item > max) {
+                        max = item;
+                    }
+                });
+                return max;
+            }
+            const yueMax = findCommonMaxCount(arrA, arrB);
+            return yueMax;
+        }
+
+        // 最小公倍数
+        function LCM(a, b) {
+            let flag = 1;
+            const arr = []
+            while (flag <= b) {
+                let result = a * flag;
+                console.log('result', result);
+                if (result % b == 0) {
+                    return result;
+                }
+                flag++;
+            }
+            return null;
+        }
+
+
+        const A = GCD(12, 18)
+        console.log('A', A);
+        const B = LCM(12, 18)
+        console.log('B', B);
+        **/
+
+        // function GCD(a, b) {
+        //     if (b == 0) {
+        //         return a;
+        //     } else {
+        //         return GCD(b, a % b);
+        //     }
+        // }
+
+
+        // function LCM(a, b) {
+        //     return a * b / GCD(a, b);
+        // }
+
+
+        // console.log('GCD(24,38)', GCD(38, 24));
+        // console.log('GCD(24,38)', LCM(24, 38));
+
+
+        // 题目：计算公分母（给定一组分数，统一这组分数的分母，并且将统一分母处理到尽量小）
+
+        //测试用例： // 测试
+        // let fractions = [[1, 2], [1, 3], [1, 4]];
+        // let unifiedFractions = unifyDenominators(fractions);
+        // console.log(unifiedFractions);
+
+        //    求最小公倍数
+        //     分子等于： 公倍数/分母 *分子     分母为公倍数
+
+        // function GCD(a, b) {
+        //     if (b == 0) {
+        //         return a;
+        //     } else {
+        //         return GCD(b, a % b);
+        //     }
+        // }
+        // function LCM(a, b) {
+        //     return a * b / GCD(a, b);
+        // }
+
+        // function unifyDenominators(arr) {
+        //     const mom = arr.map(item => item[1])
+        //     const lastmax = mom.reduce((acc, curr) => LCM(acc, curr), 1); // 求出全部的最小公倍数
+        //     const result = arr.map(item => [lastmax * item[0] / item[1], lastmax]);
+        //     return result;
+        // }
+
+        // let fractions = [[1, 2], [1, 3], [1, 4]];
+        // let unifiedFractions = unifyDenominators(fractions);
+        // console.log(unifiedFractions);
+
+        // let num = 90;
+        // let result = sortAndPrintPrimeFactors(num);
+        // console.log(result); // 输出：2, 3, 3, 5
+
+
+
+
+    </script>
+</body>
+
+</html>

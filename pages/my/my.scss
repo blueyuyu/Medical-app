@@ -1,0 +1,107 @@
+$padding: 40rpx;
+$small-pding: 20rpx;
+$font-l: 20px;
+.my-page {
+  padding: 150rpx 30rpx 10rpx;
+  // 背景颜色可以设置长度
+  background: linear-gradient(180deg, rgba(44, 181, 165, 0.46) 0, rgba(44, 181, 165, 0) 500rpx);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  padding-left: $padding;
+  .user-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+  .user-name {
+    font-size: $uni-font-size-base;
+    font-weight: 700;
+    padding-left: $small-pding;
+  }
+  .icon-edit {
+    padding-left: 6rpx;
+  }
+}
+.user-data {
+  padding-top: $padding;
+  .user-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .data-num {
+      font-size: $font-l;
+      color: $uni-text-color;
+    }
+    .data-text {
+      font-size: $uni-font-size-sm;
+      color: $uni-text-color-grey;
+    }
+  }
+}
+
+.myDoctor {
+  box-sizing: border-box;
+  height: 210rpx;
+  padding-left: 5rpx;
+  padding-top: $small-pding;
+  background-color: $uni-bg-color;
+  .doctor-img {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100rpx;
+  }
+  .name {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .title {
+    padding-left: 10rpx;
+    font-size: $uni-font-size-sm;
+    color: $uni-text-color-grey;
+  }
+  .doctor-info,
+  .hospital {
+    font-size: 14px;
+    padding-left: $small-pding;
+  }
+  .info-bottom {
+    padding-top: 10rpx;
+  }
+  .doctor-enter {
+    padding-left: $small-pding;
+  }
+  .doctor-enter button {
+    background-color: #e6f9f7;
+    font-size: $uni-font-size-sm;
+  }
+  .is-hover {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: #179b16;
+    border-color: #179b16;
+  }
+}
+
+uni-button:after {
+  border: none;
+}
+
+.order {
+  background-color: $uni-bg-color;
+  padding: $padding 0;
+  .grid-text {
+    font-size: $uni-font-size-sm;
+    color: $uni-text-color-grey;
+    padding-top: 10rpx;
+  }
+}
+
+.logout {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background-color: $uni-bg-color;
+  font-size: $uni-font-size-base;
+}
