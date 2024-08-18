@@ -1,4 +1,7 @@
 import Request from 'luch-request'; // 使用npm
+import { useUserStore } from '@/stores/index.js';
+
+const whiteList = ['/login/password'];
 
 // baseUrl:https://t1ps66c7na.hk.aircode.run 此基地址不可使用，现更换h5端接口地址
 const http = new Request({
@@ -10,8 +13,9 @@ http.interceptors.request.use(
   (config) => {
     // 可使用async await 做异步操作
     // 演示custom 用处
-    if (config.custom.auth) {
-      config.header.token = 'token';
+    const store = useUserStore();
+    if (store.token && !whiteList.includes(config.url)) {
+      config.header.token = store.token;
     }
     if (config.custom.loading) {
       uni.showLoading();

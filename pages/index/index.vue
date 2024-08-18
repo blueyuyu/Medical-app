@@ -8,7 +8,7 @@
 
 <script setup>
 import { http } from '@/utils/http.js';
-import { useCounterStore } from '@/stores/counter.js';
+import { useCounterStore } from '@/stores/index.js';
 import customSection from '@/components/custom-section.vue';
 const counterStore = useCounterStore();
 console.log(counterStore.count);

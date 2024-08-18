@@ -15,15 +15,27 @@
 <script setup>
 import { reactive, ref } from 'vue';
 import { userLogin } from '@/apis/user.js';
+import { useUserStore } from '@/stores/index.js';
 const formData = reactive({
-  mobile: '',
-  password: ''
+  mobile: '13230000001',
+  password: 'abc12345'
 });
+
+const store = useUserStore();
 
 const submitForm = async () => {
   if (formData.mobile !== '' && formData.mobile !== '') {
     const res = await userLogin(formData.mobile, formData.password);
     console.log('[ res ] => ', res);
+    console.log('[ userStore ] => ', store);
+    // 注意事项1： 如果使用自动存储的那个，就不用自己把对象设置成序列化的形式
+    store.setUser(res);
+    store.setToken(res.token);
+
+    // 跳转到tab栏页面首页
+    uni.switchTab({
+      url: '/pages/my/my'
+    });
   }
 };
 </script>

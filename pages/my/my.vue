@@ -156,7 +156,7 @@
       <!-- list导航栏 -->
 
       <!-- 退出登录 -->
-      <view class="logout">退出登录</view>
+      <view class="logout" @click="logout">退出登录</view>
     </div>
   </scroll-page>
 </template>
@@ -164,6 +164,7 @@
 <script setup>
 import scrollPage from '@/components/scroll-page.vue';
 import customSection from '@/components/custom-section.vue';
+import { useUserStore } from '@/stores/index.js';
 const baseList = [
   {
     src: '../../static/images/order-status-1.png',
@@ -182,6 +183,18 @@ const baseList = [
     title: '全部订单'
   }
 ];
+const store = useUserStore();
+
+const logout = () => {
+  // 退出登录
+  // 清空用户pinia
+  store.delUser();
+  store.delToken();
+  // 跳转到tabbar的首页去
+  uni.switchTab({
+    url: '/pages/index/index'
+  });
+};
 </script>
 
 <style lang="scss" scoped>
