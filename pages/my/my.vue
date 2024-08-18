@@ -3,8 +3,8 @@
     <div class="my-page">
       <!-- 用户资料 -->
       <div class="user-profile">
-        <image class="user-avatar" src="../../static/uploads/doctor-avatar-2.png" mode=""></image>
-        <text class="user-name">用户001</text>
+        <image class="user-avatar" :src="userInfo.avatar || '../../static/uploads/doctor-avatar-2.png'" mode=""></image>
+        <text class="user-name">{{ userInfo.account || '用户001' }}</text>
         <text class="iconfont icon-edit"></text>
       </div>
       <!-- 用户数据 -->
@@ -12,25 +12,25 @@
         <uv-row justify="space-between" gutter="10">
           <uv-col span="3">
             <navigator url="" hover-class="navigator-hover" class="user-col">
-              <text class="data-num">150</text>
+              <text class="data-num">{{ userInfo.collectionNumber || '0' }}</text>
               <text class="data-text">收藏</text>
             </navigator>
           </uv-col>
           <uv-col span="3">
             <navigator url="" hover-class="navigator-hover" class="user-col">
-              <text class="data-num">150</text>
+              <text class="data-num">{{ userInfo.likeNumber || '0' }}</text>
               <text class="data-text">关注</text>
             </navigator>
           </uv-col>
           <uv-col span="3">
             <navigator url="" hover-class="navigator-hover" class="user-col">
-              <text class="data-num">150</text>
+              <text class="data-num">{{ userInfo.score || '0' }}</text>
               <text class="data-text">积分</text>
             </navigator>
           </uv-col>
           <uv-col span="3">
             <navigator url="" hover-class="navigator-hover" class="user-col">
-              <text class="data-num">150</text>
+              <text class="data-num">{{ userInfo.couponNumber }}</text>
               <text class="data-text">优惠券</text>
             </navigator>
           </uv-col>
@@ -165,6 +165,8 @@
 import scrollPage from '@/components/scroll-page.vue';
 import customSection from '@/components/custom-section.vue';
 import { useUserStore } from '@/stores/index.js';
+import { getUserInfo } from '@/apis/user.js';
+import { reactive, ref } from 'vue';
 const baseList = [
   {
     src: '../../static/images/order-status-1.png',
@@ -184,15 +186,23 @@ const baseList = [
   }
 ];
 const store = useUserStore();
+const userInfo = ref({});
+
+const setUserInfo = async () => {
+  const res = await getUserInfo();
+  userInfo.value = res;
+  store.setUser(res);
+};
+setUserInfo();
 
 const logout = () => {
   // 退出登录
   // 清空用户pinia
   store.delUser();
   store.delToken();
-  // 跳转到tabbar的首页去
-  uni.switchTab({
-    url: '/pages/index/index'
+  // 退出到登录页，不可返回其他栈的
+  uni.reLaunch({
+    url: '/pages/login/login'
   });
 };
 </script>

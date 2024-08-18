@@ -14,7 +14,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
-import { userLogin } from '@/apis/user.js';
+import { userLogin, getUserInfo } from '@/apis/user.js';
 import { useUserStore } from '@/stores/index.js';
 const formData = reactive({
   mobile: '13230000001',
@@ -29,7 +29,7 @@ const submitForm = async () => {
     console.log('[ res ] => ', res);
     console.log('[ userStore ] => ', store);
     // 注意事项1： 如果使用自动存储的那个，就不用自己把对象设置成序列化的形式
-    store.setUser(res);
+    // store.setUser(res);
     store.setToken(res.token);
 
     // 跳转到tab栏页面首页

@@ -1,29 +1,38 @@
 import Request from 'luch-request'; // 使用npm
 import { useUserStore } from '@/stores/index.js';
+import { type } from '../uni_modules/uni-forms/components/uni-forms/utils';
 
 const whiteList = ['/login/password'];
 
 // baseUrl:https://t1ps66c7na.hk.aircode.run 此基地址不可使用，现更换h5端接口地址
 const http = new Request({
-  baseURL: 'https://consult-api.itheima.net/'
+  baseURL: 'https://consult-api.itheima.net/',
+  custom: {
+    loading: true
+  }
 });
 
 // 配置请求拦截器
 http.interceptors.request.use(
   (config) => {
-    // 可使用async await 做异步操作
-    // 演示custom 用处
-    const store = useUserStore();
-    if (store.token && !whiteList.includes(config.url)) {
-      config.header.token = store.token;
-    }
+    // 先出现加载
     if (config.custom.loading) {
-      uni.showLoading();
+      uni.utils.toast('加载中', 'loading');
     }
 
-    // if (!token) { // 如果token不存在，return Promise.reject(config) 会取消本次请求
-    //    return Promise.reject(config)
-    //  }
+    const store = useUserStore();
+    const defaultHeader = {
+      'Content-Type': 'application/json'
+    };
+    if (store.token && !whiteList.includes(config.url)) {
+      defaultHeader.authorization = 'Bearer ' + store.token;
+    }
+    // 后面覆盖前面
+    config.header = {
+      ...defaultHeader,
+      ...config.header
+    };
+
     return config;
   },
   (config) => {
@@ -35,19 +44,20 @@ http.interceptors.request.use(
 // 配置响应拦截器
 http.interceptors.response.use(
   (response) => {
-    /* 对响应成功做点什么 可使用async await 做异步操作*/
-    //  if (response.data.code !== 200) { // 服务端返回的状态码不等于200，则reject()
-    //    return Promise.reject(response) // return Promise.reject 可使promise状态进入catch
-    // if (response.config.custom.verification) { // 演示自定义参数的作用
-    //   return response.data
-    // }
-    console.log(response);
+    // 在响应拦截器里要关闭加载状态
+    uni.hideToast();
+    if (response.data.code === 401) {
+      uni.switchTab({
+        url: '/pages/login/login'
+      });
+    }
     return response;
   },
-  (response) => {
+  (error) => {
     /*  对响应错误做点什么 （statusCode !== 200）*/
-    console.log(response);
-    return Promise.reject(response);
+    uni.hideToast();
+    console.log(error);
+    return Promise.reject(error);
   }
 );
 

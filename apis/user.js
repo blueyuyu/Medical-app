@@ -34,3 +34,11 @@ export const postUserLike = (type, id) => {
     id
   });
 };
+
+// 用户个人信息列表
+export const getUserLike = (type, id) => {
+  return post('/like', {
+    type,
+    id
+  });
+};
