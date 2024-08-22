@@ -111,7 +111,7 @@
             :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-03' }"
             title="家庭档案"
             link
-            to="/pages/vue/index/index"
+            to="/subpkg_archive/form/index"
             @click="onClick($event, 1)"
             :border="false"
           ></uni-list-item>
@@ -190,7 +190,7 @@ const userInfo = ref({});
 
 const setUserInfo = async () => {
   const res = await getUserInfo();
-  userInfo.value = res;
+  userInfo.value = res;-
   store.setUser(res);
 };
 setUserInfo();
@@ -204,6 +204,10 @@ const logout = () => {
   uni.reLaunch({
     url: '/pages/login/login'
   });
+};
+
+const onClick = () => {
+  console.log('[ 2 ] => ', 2);
 };
 </script>
 

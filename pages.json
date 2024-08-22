@@ -42,6 +42,22 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "subPackages": [{
+    "root": "subpkg_archive",
+    "pages": [{
+        "path": "form/index",
+        "style": {
+          "navigationBarTitleText": "添加患者"
+        }
+      },
+      {
+        "path": "list/index",
+        "style": {
+          "navigationBarTitleText": "家庭档案"
+        }
+      }
+    ]
+  }],
   "uniIdRouter": {},
   "tabBar": {
     "color": "#7A7E83",
@@ -78,4 +94,5 @@
       }
     ]
   }
+
 }
