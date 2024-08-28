@@ -111,7 +111,7 @@
             :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-03' }"
             title="家庭档案"
             link
-            to="/subpkg_archive/form/index"
+            to="/subpkg_archive/list/index"
             @click="onClick($event, 1)"
             :border="false"
           ></uni-list-item>
@@ -190,8 +190,8 @@ const userInfo = ref({});
 
 const setUserInfo = async () => {
   const res = await getUserInfo();
-  userInfo.value = res;-
-  store.setUser(res);
+  userInfo.value = res;
+  -store.setUser(res);
 };
 setUserInfo();
 

@@ -1,64 +1,77 @@
 <template>
   <scroll-page style="padding: 40rpx">
     <view class="archivesTip">最多可添加6人</view>
-    <view class="archives-item">
+    <view class="archives-item" v-for="(item, index) in patientList" :key="item.id" style="padding-bottom: 40rpx">
       <uni-swipe-action>
-        <uni-swipe-action-item :left-options="options2" :right-options="options2" :show="isOpened" :auto-close="false" @change="change" @click="bindClick">
+        <uni-swipe-action-item :right-options="options2" @change="swipeChange($event, index)" @click="bindClick(item.id)">
           <view class="archives-box bd-box">
             <div class="archives-left">
               <div class="archives-name">
-                <text>李明</text>
-                <text>3210******000006162</text>
+                <text>{{ item.name }}</text>
+                <text>{{ item.idCard }}</text>
+                <uv-tags v-if="item.defaultFlag === 1" text="默认" size="mini" bgColor="#15c1a3" style="display: inline-block; line-height: 60rpx"></uv-tags>
               </div>
               <view class="archives-gender">
-                <text>女</text>
-                <text>63岁</text>
+                <text>{{ item.genderValue }}</text>
+                <text>{{ item.age }}岁</text>
               </view>
             </div>
-            <div class="archives-edit">编辑</div>
+            <navigator :url="'/subpkg_archive/form/index?id=' + item.id" class="archives-edit">
+              <uni-icons type="compose" size="28" color="#14c1a2" style="line-height: 150%"></uni-icons>
+            </navigator>
           </view>
         </uni-swipe-action-item>
       </uni-swipe-action>
     </view>
+    <navigator url="/subpkg_archive/form/index" class="addPatient" v-if="patientList.length < 6" style="display: flex; justify-content: center">
+      <view style="display: flex; flex-direction: column">
+        <uni-icons type="plusempty" size="28" color="#ccc"></uni-icons>
+        <text class="textColor">添加患者</text>
+      </view>
+    </navigator>
   </scroll-page>
 </template>
 
 <script setup>
 import scrollPage from '@/components/scroll-page.vue';
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { getPatientList, delPatient } from '@/apis/patient.js';
+import { onShow } from '@dcloudio/uni-app';
 
 const options2 = [
   {
-    text: '取消',
-    style: {
-      backgroundColor: '#007aff'
-    }
-  },
-  {
-    text: '确认',
+    text: '删除',
     style: {
       backgroundColor: '#F56C6C'
     }
   }
 ];
 
-const isOpened = ref('none'); // left right
+const patientList = ref([]);
 
-const change = (e) => {
-  isOpened.value = e;
-  console.log('返回：', e);
+const addText = 'color:$uni-text-color-disable';
+
+const getPatientListFn = async () => {
+  const res = await getPatientList();
+  patientList.value = res;
 };
 
-const bindClick = (e) => {
-  console.log(e);
-  uni.showToast({
-    title: `点击了${e.position === 'left' ? '左侧' : '右侧'} ${e.content.text}按钮`,
-    icon: 'none'
-  });
+const swipeChange = (e, index) => {
+  // console.log('当前状态：' + e + '，下标：' + index);
 };
+
+const bindClick = async (index) => {
+  const res = await delPatient(index);
+  uni.utils.toast('删除成功');
+  getPatientListFn();
+};
+
+onShow(() => {
+  getPatientListFn();
+});
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .archivesTip {
   padding-top: 20rpx;
   padding-bottom: 20rpx;
@@ -80,9 +93,28 @@ const bindClick = (e) => {
   border-bottom-color: #f5f5f5;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  border-radius: 10rpx;
+}
+
+.archives-box:hover {
+  background-color: #e8f8f7;
 }
 
 .archives-text {
   font-size: 15px;
+}
+
+.archives-left {
+  padding-bottom: 44rpx;
+}
+
+.archives-name text:first-child,
+.archives-name text:nth-child(2),
+.archives-gender text:first-child {
+  padding-right: 20rpx;
+}
+
+.textColor {
+  color: #ccc;
 }
 </style>

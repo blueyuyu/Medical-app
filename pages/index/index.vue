@@ -3,6 +3,7 @@
   <text class="iconfont icon-done"></text>
   <text class="iconfont icon-tool-05"></text>
   <button @click="getData">发请求</button>
+  <button @click="getLogin">去登录</button>
   <custom-section :showArrow="true" title="药品订单">全部订单</custom-section>
 </template>
 
@@ -21,6 +22,12 @@ const getData = async () => {
     // header: {
     //   customHeader: '22222222'
     // }
+  });
+};
+
+const getLogin = () => {
+  uni.reLaunch({
+    url: '/pages/login/login'
   });
 };
 </script>

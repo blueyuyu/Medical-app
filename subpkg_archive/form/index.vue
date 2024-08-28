@@ -4,8 +4,8 @@
       <uv-form-item label="患者姓名" prop="name" labelWidth="100" customStyle="margin-top: 10rpx">
         <uv-input v-model="form.name" border="none" placeholder="请填写真实姓名"></uv-input>
       </uv-form-item>
-      <uv-form-item label="患者身份证号" prop="isCard" labelWidth="100" customStyle="margin-top: 20rpx">
-        <uv-input v-model="form.isCard" border="none" placeholder="请填写身份证号"></uv-input>
+      <uv-form-item label="患者身份证号" prop="idCard" labelWidth="100" customStyle="margin-top: 20rpx">
+        <uv-input v-model="form.idCard" border="none" placeholder="请填写身份证号"></uv-input>
       </uv-form-item>
       <uv-form-item label="患者性别" prop="gender" labelWidth="100" customStyle="margin-top: 20rpx">
         <uv-radio-group v-model="form.gender">
@@ -22,10 +22,12 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
-import { postPatientInfo } from '@/apis/patient.js';
+import { postPatientInfo, putPatientInfo, getPatientInfo } from '@/apis/patient.js';
+import { onLoad } from '@dcloudio/uni-app';
 const form = ref({
+  id: '',
   name: '',
-  isCard: '',
+  idCard: '',
   defaultFlag: false,
   gender: ''
 });
@@ -47,7 +49,7 @@ const rules = {
       trigger: ['blur', 'change']
     }
   ],
-  isCard: [
+  idCard: [
     {
       type: 'string',
       required: true,
@@ -95,13 +97,31 @@ const genderlist = [
     value: 0
   }
 ];
+const isEdit = ref(false);
 const submit = async () => {
   await formRef.value.validate();
   const flag = form.value.defaultFlag ? 1 : 0;
-  const res = await postPatientInfo(form.value.name, form.value.isCard, flag, form.value.gender);
-  uni.utils.toast('添加患者成功');
+  if (isEdit.value) {
+    const res = await putPatientInfo(form.value.id, form.value.name, form.value.idCard, flag, form.value.gender);
+    uni.utils.toast('修改信息成功');
+  } else {
+    const res = await postPatientInfo(form.value.name, form.value.isCard, flag, form.value.gender);
+    uni.utils.toast('添加患者成功');
+  }
   await formRef.value.resetFields();
+  uni.navigateTo({
+    url: '/subpkg_archive/list/index'
+  });
 };
+
+onLoad(async (option) => {
+  if (option.id) {
+    isEdit.value = true;
+    const res = await getPatientInfo(option.id);
+    form.value = res;
+    form.value.defaultFlag = res?.defaultFlag == 1 ? true : false;
+  }
+});
 </script>
 
 <style lang="scss" scoped>
