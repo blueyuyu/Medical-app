@@ -16,3 +16,18 @@ image {
 .bd-box {
   box-sizing: border-box;
 }
+
+// 单行省略
+.single-ll {
+  overflow: hidden;
+  border: 1px solid red;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 两行省略
+.two-ll {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 限制显示两行 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
