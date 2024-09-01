@@ -1,3 +1,4 @@
+<!-- 我的模块，每一个模块的顶部栏 -->
 <template>
   <view class="custom-section" :style="{ ...props.customStyle }">
     <view class="topTitle">

@@ -90,7 +90,7 @@
         <uni-list :border="false">
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-01' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-01' }"
             title="我的问诊"
             link
             to="/pages/vue/index/index"
@@ -99,7 +99,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-02' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-02' }"
             title="我的处方"
             link
             to="/pages/vue/index/index"
@@ -108,7 +108,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-03' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-03' }"
             title="家庭档案"
             link
             to="/subpkg_archive/list/index"
@@ -117,7 +117,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-04' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-04' }"
             title="地址管理"
             link
             to="/pages/vue/index/index"
@@ -126,7 +126,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-05' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-05' }"
             title="我的评价"
             link
             to="/pages/vue/index/index"
@@ -135,7 +135,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-06' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-06' }"
             title="官方客服"
             link
             to="/pages/vue/index/index"
@@ -144,7 +144,7 @@
           ></uni-list-item>
           <uni-list-item
             :show-extra-icon="true"
-            :extra-icon="{ customPrefix: 'iconfont', type: 'icon-tool-07' }"
+            :extra-icon="{ customPrefix: 'icon-symbol', type: 'icon-symbol-tool-07' }"
             title="设置"
             link
             to="/pages/vue/index/index"
