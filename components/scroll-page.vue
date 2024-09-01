@@ -1,3 +1,8 @@
+<!-- 滚动组件的封装，内部计算了安全距离 -->
+<!-- 1. 页面可以滚动
+2. 适配安全区域
+3. 自定义底部 tabBar 边框线
+4. 支持下拉刷新和上拉加载 -->
 <template>
   <scroll-view
     scroll-y
@@ -7,6 +12,7 @@
     :refresher-triggered="props.refresherTriggered"
     @refresherrefresh="$emit('onRefresh', $event)"
     @scrolltolower="$emit('scrolltolower', $event)"
+    @scroll="$emit('scroll', $event)"
   >
     <view class="scroll_con">
       <slot></slot>
@@ -34,7 +40,7 @@ const props = defineProps({
   backgroundColor: String
 });
 
-defineEmits(['onRefresh', 'scrolltolower']);
+defineEmits(['onRefresh', 'scrolltolower', 'scroll']);
 </script>
 
 <style lang="scss">

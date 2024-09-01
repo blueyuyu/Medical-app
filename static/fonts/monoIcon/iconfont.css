@@ -1,12 +1,11 @@
 @font-face {
-  font-family: "iconfonts";
-  /* Project id 4228769 */
-  src: url('iconfont.woff2?t=1693907427785') format('woff2'),
-    url('iconfont.woff?t=1693907427785') format('woff'),
-    url('iconfont.ttf?t=1693907427785') format('truetype');
+  font-family: "iconfont"; /* Project id 4670318 */
+  src: url('iconfont.woff2?t=1725124713378') format('woff2'),
+       url('iconfont.woff?t=1725124713378') format('woff'),
+       url('iconfont.ttf?t=1725124713378') format('truetype');
 }
 
-.iconfonts {
+.iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -14,30 +13,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-done:before {
-  content: "\ea54";
-}
-
-.icon-location:before {
-  content: "\e6ea";
-}
-
-.icon-edit:before {
-  content: "\e6e9";
-}
-
-.icon-shield:before {
-  content: "\e6e8";
-}
-
-.icon-checked:before {
-  content: "\e6e5";
+.icon-icons-:before {
+  content: "\e66c";
 }
 
 .icon-box:before {
-  content: "\e6e6";
+  content: "\e7f5";
 }
 
-.icon-truck:before {
-  content: "\e6e7";
+.icon-checked:before {
+  content: "\e615";
 }
+
+.icon-shield:before {
+  content: "\e62f";
+}
+
+.icon-edit:before {
+  content: "\e610";
+}
+
+.icon-location-fill:before {
+  content: "\e83d";
+}
+
+.icon-truch:before {
+  content: "\e6e5";
+}
+
