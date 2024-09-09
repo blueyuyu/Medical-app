@@ -20,7 +20,7 @@
         style="margin-top: 80rpx; background-color: #ffffff; border-radius: 20rpx; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px"
       >
         <uv-grid :border="false">
-          <uv-grid-item v-for="(item, index) in baseList" :key="index">
+          <uv-grid-item v-for="(item, index) in baseList" :key="index" @click="goToFn(item.goto)">
             <uv-image :src="item.url" width="44px" height="44px" style="padding-top: 26rpx"></uv-image>
             <text class="grid-text">{{ item.title }}</text>
             <text class="grid-desc">{{ item.desc }}</text>
@@ -43,7 +43,6 @@
         <view class="content-item" v-if="contentShow == 1">
           <feed-list v-for="item in 4"></feed-list>
         </view>
-
         <view class="content-item" v-if="contentShow == 2">
           <doctor-list></doctor-list>
         </view>
@@ -70,17 +69,20 @@ const baseList = [
   {
     url: '../../static/images/quick-entry-1.png',
     title: '问医生',
-    desc: '按科室查找医生'
+    desc: '按科室查找医生',
+    goto: ''
   },
   {
     url: '../../static/images/quick-entry-2.png',
     title: '极速问诊',
-    desc: '20s医生极速回复'
+    desc: '20s医生极速回复',
+    goto: '/subpkg_consult/quickAsk/index?type=2'
   },
   {
     url: '../../static/images/quick-entry-3.png',
     title: '开药门诊',
-    desc: '足不出户送药上门'
+    desc: '足不出户送药上门',
+    goto: ''
   }
 ];
 
@@ -153,6 +155,12 @@ const scrollFn = (e) => {
 
 const click = (item) => {
   contentShow.value = item.value;
+};
+
+const goToFn = (url) => {
+  uni.navigateTo({
+    url
+  });
 };
 
 const getLogin = () => {

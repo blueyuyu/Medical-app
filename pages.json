@@ -44,21 +44,46 @@
     "backgroundColor": "#F8F8F8"
   },
   "subPackages": [{
-    "root": "subpkg_archive",
-    "pages": [{
-        "path": "form/index",
-        "style": {
-          "navigationBarTitleText": "添加患者"
+      "root": "subpkg_archive",
+      "pages": [{
+          "path": "form/index",
+          "style": {
+            "navigationBarTitleText": "添加患者"
+          }
+        },
+        {
+          "path": "list/index",
+          "style": {
+            "navigationBarTitleText": "家庭档案"
+          }
         }
-      },
-      {
-        "path": "list/index",
-        "style": {
-          "navigationBarTitleText": "家庭档案"
+      ]
+    },
+    {
+      "root": "subpkg_consult",
+      "pages": [{
+          "path": "department/index",
+          "style": {
+            "navigationBarTitleText": "选择科室",
+            "navigationBarBackgroundColor": "#ffffff"
+          }
+        },
+        {
+          "path": "description/index",
+          "style": {
+            "navigationBarTitleText": "病情描述"
+          }
+        },
+        {
+          "path": "quickAsk/index",
+          "style": {
+            "navigationBarTitleText": "极速问诊",
+            "navigationStyle": "custom"
+          }
         }
-      }
-    ]
-  }],
+      ]
+    }
+  ],
   "uniIdRouter": {},
   "tabBar": {
     "color": "#7A7E83",

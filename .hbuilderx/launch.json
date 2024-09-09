@@ -2,7 +2,7 @@
     "version" : "1.0",
     "configurations" : [
         {
-            "openVueDevtools" : true,
+            "openVueDevtools" : false,
             "type" : "uni-app:h5"
         }
     ]
