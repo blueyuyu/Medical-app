@@ -23,17 +23,13 @@
           <view class="form-item">
             <view class="form-title">本次患病多久了？</view>
             <view class="button_class">
-              <custom-button borderRadius="12rpx" margin="0 20rpx 0 0" @click="chooseTimeFn(1)">一周内</custom-button>
-              <custom-button borderRadius="12rpx" margin="0 20rpx 0 0" @click="chooseTimeFn(2)">一月内</custom-button>
-              <custom-button borderRadius="12rpx" margin="0 20rpx 0 0" @click="chooseTimeFn(3)">半年内</custom-button>
-              <custom-button borderRadius="12rpx" width="170rpx" @click="chooseTimeFn(4)">大于半年</custom-button>
+              <desc-tag :tagArr="illnessTimeArr" @selected-tag="selectFn($event, 'illness')"></desc-tag>
             </view>
           </view>
           <view class="form-item">
             <view class="form-title">此次病情是否去医院就诊过？</view>
             <view class="button_class">
-              <custom-button borderRadius="12rpx" margin="0 20rpx 0 0" @click="chooseConsultFn(1)">就诊过</custom-button>
-              <custom-button borderRadius="12rpx" width="170rpx" @click="chooseConsultFn(0)">没就诊过</custom-button>
+              <desc-tag :tagArr="renalArr" @selected-tag="selectFn($event, 'renal')"></desc-tag>
             </view>
           </view>
           <view style="display: flex; flex-direction: column; align-items: center; padding-bottom: 200rpx">
@@ -69,12 +65,13 @@
 
 <script setup>
 import scrollPage from '@/components/scroll-page.vue';
-import { computed, reactive } from 'vue';
 import customButton from '@/components/custom-button.vue';
+import { computed, reactive } from 'vue';
 import { useConsultStore } from '@/stores/index.js';
 import { storeToRefs } from 'pinia';
 import { onLoad } from '@dcloudio/uni-app';
 import { setValue } from '@/utils/tools.js';
+import descTag from './component/desc-tag.vue';
 
 const consultStore = useConsultStore();
 const { consultData, resetConsultDataFn } = storeToRefs(consultStore);
@@ -113,6 +110,49 @@ const nextStepFn = () => {
   uni.navigateTo({
     url: '/subpkg_archive/list/index'
   });
+};
+
+const illnessTimeArr = [
+  {
+    name: '一周内',
+    value: 0,
+    checked: false
+  },
+  {
+    name: '一月内',
+    value: 1,
+    checked: false
+  },
+  {
+    name: '半年内',
+    value: 2,
+    checked: false
+  },
+  {
+    name: '大于半年',
+    value: 3,
+    checked: false
+  }
+];
+const renalArr = [
+  {
+    name: '就诊过',
+    value: 1,
+    checked: false
+  },
+  {
+    name: '没就诊过',
+    value: 0,
+    checked: false
+  }
+];
+const selectFn = (tagValue, type) => {
+  if (type === 'illness') {
+    descForm.illnessTime = tagValue;
+  }
+  if (type === 'renal') {
+    descForm.renalFuntion = tagValue;
+  }
 };
 
 onLoad((option) => {

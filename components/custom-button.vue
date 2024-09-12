@@ -46,7 +46,7 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .is-hover {
   color: rgba(255, 255, 255, 0.6);
 }
