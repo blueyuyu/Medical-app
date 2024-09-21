@@ -35,6 +35,13 @@
         "navigationBarTitleText": "登录",
         "enablePullDownRefresh": false
       }
+    }, {
+      "path": "pages/test/test",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
     }
   ],
   "globalStyle": {
@@ -78,6 +85,26 @@
           "path": "quickAsk/index",
           "style": {
             "navigationBarTitleText": "极速问诊",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "selectPatient/index",
+          "style": {
+            "navigationBarTitleText": "选择患者"
+          }
+        },
+        {
+          "path": "payment/index",
+          "style": {
+            "navigationBarTitleText": "支付",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "room/index",
+          "style": {
+            "navigationBarTitleText": "沙盒模型",
             "navigationStyle": "custom"
           }
         }

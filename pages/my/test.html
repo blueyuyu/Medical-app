@@ -5,10 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
   </head>
+
   <body>
     <script>
-      const res = getParams('http://www.baidu.com/?keyWord=key_word&number=90')
-      console.log('[ z ] => ', res);
+      // const res = getParams('http://www.baidu.com/?keyWord=key_word&number=90')
+      // console.log('[ z ] => ', res);
+      // const line = 'asdfas';
+      // const line2 = 'werasdfaswer';
+
+      // let short, long;
+      // if (line.length >= line2.length) {
+      //   short = line2;
+      //   long = line;
+      // } else {
+      //   short = line;
+      //   long = line2;
+      // }
+
+      // let dp = [];
+      // let max = 0;
+
+      // for (let i = 0; i < short.length; i++) {
+      //   dp[i] = 0;
+      //   for (let j = 0; j <= i; j++) {
+      //     let str = short.slice(j, i + 1);
+      //     if (long.indexOf(str) > -1) {
+      //       dp[i] = Math.max(str.length, dp[i]);
+      //       max = Math.max(max, dp[i])
+      //     }
+      //   }
+      // }
+
+      // console.log(max);
+
+
+      // Write your code here]
+      (function() {
+        // const str = '1 0 1B cFUJNOLO 1150175017(&^%&$vabovbaoadd 123#$%#%#O';
+        // const reg = /[A-Z]/g;
+        // let count = 0;
+        // let match;
+        // while ((match = reg.exec(str)) !== null) {
+        //   console.log('[ res.exec ] => ', match);
+        //   count++;
+        // }
+        // console.log('[ count ] => ', count);
+
+        // const str = 'They are students ';
+        // const delStr = 'aeiou';
+        // const delRes = '[' + delStr + ']'
+        // const reg = new RegExp(delRes, 'g');
+        // const result = str.replace(reg, '');
+        // console.log(result);
+        const str1 = '';
+        const str2 = 'aaa';
+        let max = 0;
+        const dep = Array.from(Array(str1.length + 1), () =>
+          Array(str2.length + 1).fill(0)
+        );
+        for (let i = 0; i < str1.length; i++) {
+          for (let j = 0; j < str2.length; j++) {
+            dep[i + 1][j + 1] = str1[i] === str2[j] ? dep[i][j] + 1 : 0;
+            max = Math.max(max, dep[i + 1][j + 1]);
+          }
+        }
+        console.log('[ dep ] => ', dep);
+      })();
     </script>
   </body>
 </html>

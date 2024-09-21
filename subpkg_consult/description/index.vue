@@ -33,7 +33,6 @@
             </view>
           </view>
           <view style="display: flex; flex-direction: column; align-items: center; padding-bottom: 200rpx">
-            <!-- <uv-upload width="80" height="80" :fileList="fileList1" name="1" multiple :maxCount="9" @afterRead="afterRead" @delete="deletePic"></uv-upload>-->
             <uni-file-picker
               v-model="descForm.pictures"
               fileMediatype="image"
@@ -102,35 +101,33 @@ const nextStepEnable = computed(() => {
   return descForm.illnessDesc !== '' && descForm.illnessTime !== '' && descForm.renalFuntion !== '';
 });
 const nextStepFn = () => {
-  console.log('[ 进行下一步 descForm] => ', descForm);
   consultData.value = descForm;
   // 存储路径，再继续跳转到其他页面
   setValue(consultStore, queryOption, true);
-  console.log('[ consultStore ] => ', consultStore.id, consultStore.type, consultStore.illnessType);
   uni.navigateTo({
-    url: '/subpkg_archive/list/index'
+    url: '/subpkg_consult/selectPatient/index'
   });
 };
 
 const illnessTimeArr = [
   {
     name: '一周内',
-    value: 0,
-    checked: false
-  },
-  {
-    name: '一月内',
     value: 1,
     checked: false
   },
   {
-    name: '半年内',
+    name: '一月内',
     value: 2,
     checked: false
   },
   {
-    name: '大于半年',
+    name: '半年内',
     value: 3,
+    checked: false
+  },
+  {
+    name: '大于半年',
+    value: 4,
     checked: false
   }
 ];

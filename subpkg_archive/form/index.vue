@@ -75,7 +75,7 @@ const rules = {
     {
       validator: (rule, value, callback) => {
         // 通过身份证校验性别并且判断
-        const card = form.value.isCard;
+        const card = form.value.idCard;
         const gender = parseInt(card.charAt(card.length - 1), 10) % 2 == 0 ? 0 : 1;
         if (value !== gender) {
           return false;
@@ -98,6 +98,7 @@ const genderlist = [
   }
 ];
 const isEdit = ref(false);
+let goToUrl = '/subpkg_archive/list/index';
 const submit = async () => {
   await formRef.value.validate();
   const flag = form.value.defaultFlag ? 1 : 0;
@@ -105,16 +106,21 @@ const submit = async () => {
     const res = await putPatientInfo(form.value.id, form.value.name, form.value.idCard, flag, form.value.gender);
     uni.utils.toast('修改信息成功');
   } else {
-    const res = await postPatientInfo(form.value.name, form.value.isCard, flag, form.value.gender);
+    const res = await postPatientInfo(form.value.name, form.value.idCard, flag, form.value.gender);
     uni.utils.toast('添加患者成功');
   }
   await formRef.value.resetFields();
   uni.navigateTo({
-    url: '/subpkg_archive/list/index'
+    url: goToUrl
   });
 };
 
 onLoad(async (option) => {
+  if (option.from) {
+    // from=consult
+    // console.log('[ option.from ] => ', option.from);
+    goToUrl = '/subpkg_consult/selectPatient/index';
+  }
   if (option.id) {
     isEdit.value = true;
     const res = await getPatientInfo(option.id);

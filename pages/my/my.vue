@@ -191,7 +191,7 @@ const userInfo = ref({});
 const setUserInfo = async () => {
   const res = await getUserInfo();
   userInfo.value = res;
-  -store.setUser(res);
+  store.setUser(res);
 };
 setUserInfo();
 
