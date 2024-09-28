@@ -38,10 +38,6 @@ const props = defineProps({
     type: Array,
     default: []
   },
-  tagValue: {
-    type: [Array, Number, String],
-    default: ''
-  },
   type: {
     type: String,
     default: 'primary'
@@ -78,7 +74,7 @@ const props = defineProps({
 
 const tagData = reactive(props.tagArr);
 
-const emit = defineEmits(['selected-tag', 'update:tagValue']);
+const emit = defineEmits(['selected-tag']);
 let selectValue = props.chooseType === 'radio' ? null : [];
 
 const selectedFn = (type, item) => {
