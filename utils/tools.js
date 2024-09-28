@@ -60,3 +60,24 @@ export function clearObj(obj) {
     obj[item] = '';
   });
 }
+
+// 涉及比例关系 设计稿 1px / 设计稿基准宽度 = 1rpx  / 750 rpx
+/**
+ * 计算 rpx 到 px的转化
+ * @param {Number} rpx 像素，要求不带单位
+ * @return {Number} px ，不带单位
+ */
+export function rpxToPx(rpx) {
+  const screenWidth = uni.getSystemInfoSync().screenWidth;
+  return (screenWidth * Number.parseInt(rpx)) / 750;
+}
+
+/**
+ * 计算px 到 rpx的转化
+ * @param {Number} px 像素，要求不带单位
+ * @return {Number} rpx ，不带单位
+ */
+export function pxToRpx(px) {
+  const screenWidth = uni.getSystemInfoSync().screenWidth;
+  return (750 * Number.parseInt(px)) / screenWidth;
+}

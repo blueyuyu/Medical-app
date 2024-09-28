@@ -9,7 +9,8 @@
         :style="{
           color: props.textColor,
           borderColor: props.borderColor,
-          bgColor: props.backgroundColor
+          bgColor: props.backgroundColor,
+          marginRight: rpxToPx(24) + 'px'
         }"
         @click="selectedFn(props.chooseType, item)"
       >
@@ -27,6 +28,7 @@ export default {
 <script setup>
 // 对封装组件props的一些解释
 import { computed, reactive, ref, watch } from 'vue';
+import { pxToRpx, rpxToPx } from '@/utils/tools.js';
 
 /**
  * @property {String} type = [info,primary]
@@ -119,7 +121,7 @@ const selectedFn = (type, item) => {
   background-color: #fff;
   // color: #16c2a3;
   font-weight: 500;
-  margin: 0 30rpx 0 0;
+  // margin: 0 0 0 0;
   &.active {
     color: #fff !important;
     background-color: #16c2a3 !important;
@@ -162,5 +164,13 @@ const selectedFn = (type, item) => {
   }
 }
 
-// 圆弧怎么实现的
+// 适配小机型
+@media screen and (max-width: 360px) {
+  .tag.medium {
+    padding: 8rpx 24rpx;
+  }
+  .tag.large {
+    padding: 12rpx 34rpx;
+  }
+}
 </style>

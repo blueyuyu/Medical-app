@@ -47,7 +47,7 @@
           </view>
         </uv-form>
       </view>
-      <view class="desc-btn" style="position: fixed; width: 90%; left: 0rpx; top: 1520rpx; margin-left: 30rpx">
+      <view class="desc-btn" style="position: fixed; width: 90%; left: 0rpx; bottom: 20rpx; margin-left: 30rpx">
         <uv-button
           type="primary"
           :disabled="!nextStepEnable"
@@ -113,7 +113,6 @@ const modalCancelFn = () => {
 
 const modalConfirmFn = () => {
   // 数据回显，再关闭
-  // console.log('[ consultData ] => ', consultData);
   descForm.illnessDesc = consultData.value.illnessDesc;
   descForm.illnessTime = consultData.value.illnessTime;
   descForm.renalFuntion = consultData.value.renalFuntion;
@@ -189,7 +188,7 @@ const selectFn = (tagValue, type) => {
 };
 
 // 这是回显时，两个按钮的高亮逻辑
-// ？还有没有更好的思路啊
+//TODO 还有没有更好的思路啊
 watch(
   () => descForm.illnessTime,
   (newValue, oldValue) => {
