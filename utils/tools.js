@@ -37,7 +37,7 @@ export const ObjToUrl = (option) => {
 // }
 
 /**
- * 遍历的目标对象 的 复制方法
+ * 遍历的目标对象 的 复制方法,不可对响应式使用？
  * @param {object} obj 目标对象,
  * @param {object} valueObj 有值的对象
  * @param {boolean} reverseCopy 反转被复制对象，设置为 true ,则遍历 有值的对象

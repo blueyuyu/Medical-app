@@ -38,6 +38,10 @@ const props = defineProps({
     type: Array,
     default: []
   },
+  tagValue: {
+    type: [Array, Number, String],
+    default: ''
+  },
   type: {
     type: String,
     default: 'primary'
@@ -74,13 +78,14 @@ const props = defineProps({
 
 const tagData = reactive(props.tagArr);
 
-const emit = defineEmits(['selected-tag']);
+const emit = defineEmits(['selected-tag', 'update:tagValue']);
 let selectValue = props.chooseType === 'radio' ? null : [];
 
 const selectedFn = (type, item) => {
   if (type == 'radio') {
-    //TODO 思考一个问题： 为什么item.checked 触发更新，而使用map 进行的遍历操作，却没有触发页面的样式更新呢？
+    // TODO 思考一个问题： 为什么item.checked 触发更新，而使用 map 进行的遍历操作，却没有触发页面的样式更新呢？
     // 能使用 watch 或者 compued 来实现吗？
+    // 理论上父组件传来的数据不应该被子组件修改
     item.checked = true;
     props.tagArr.forEach((mapItem) => {
       mapItem.checked = mapItem.name === item.name ? true : false;

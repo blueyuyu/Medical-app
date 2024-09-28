@@ -23,7 +23,7 @@
           <view class="form-item">
             <view class="form-title">本次患病多久了？</view>
             <view class="button_class">
-              <desc-tag :tagArr="illnessTimeArr" @selected-tag="selectFn($event, 'illness')"></desc-tag>
+              <desc-tag :tagValue="descForm.illnessTime" :tagArr="illnessTimeArr" @selected-tag="selectFn($event, 'illness')"></desc-tag>
             </view>
           </view>
           <view class="form-item">
@@ -59,21 +59,33 @@
         ></uv-button>
       </view>
     </scroll-page>
+    <uv-modal
+      ref="modalRef"
+      title="温馨提示"
+      content="是否恢复之前填写的病情信息"
+      width="600rpx"
+      showCancelButton
+      confirmColor="#16C2A3"
+      cancelColor="#848484"
+      @confirm="modalConfirmFn"
+      @cancel="modalCancelFn"
+    ></uv-modal>
   </view>
 </template>
 
 <script setup>
 import scrollPage from '@/components/scroll-page.vue';
 import customButton from '@/components/custom-button.vue';
-import { computed, reactive } from 'vue';
+import { computed, onMounted, reactive, ref, watch } from 'vue';
+import { onLoad, onShow } from '@dcloudio/uni-app';
 import { useConsultStore } from '@/stores/index.js';
 import { storeToRefs } from 'pinia';
-import { onLoad } from '@dcloudio/uni-app';
 import { setValue } from '@/utils/tools.js';
 import descTag from './component/desc-tag.vue';
 
 const consultStore = useConsultStore();
-const { consultData, resetConsultDataFn } = storeToRefs(consultStore);
+// method 与 非响应式会被完全忽略
+const { consultData } = storeToRefs(consultStore);
 
 const descForm = reactive({
   illnessDesc: '',
@@ -83,7 +95,31 @@ const descForm = reactive({
 });
 
 const fileList1 = [];
-let queryOption = {}; // 接收到的路径参数对象
+let queryOption = {}; // 接收到的路径参数
+
+// 此处是数据回显代码
+const modalRef = ref('');
+const descDataEcho = () => {
+  if (consultData.value.illnessDesc) {
+    modalRef.value.open();
+  }
+};
+
+const modalCancelFn = () => {
+  // 消除consultData，并且关闭
+  consultStore.resetConsultDataFn();
+  modalRef.value.close();
+};
+
+const modalConfirmFn = () => {
+  // 数据回显，再关闭
+  // console.log('[ consultData ] => ', consultData);
+  descForm.illnessDesc = consultData.value.illnessDesc;
+  descForm.illnessTime = consultData.value.illnessTime;
+  descForm.renalFuntion = consultData.value.renalFuntion;
+  descForm.pictures = consultData.value.pictures;
+  modalRef.value.close();
+};
 
 const chooseTimeFn = (value) => {
   descForm.illnessTime = value;
@@ -109,7 +145,7 @@ const nextStepFn = () => {
   });
 };
 
-const illnessTimeArr = [
+const illnessTimeArr = reactive([
   {
     name: '一周内',
     value: 1,
@@ -130,8 +166,8 @@ const illnessTimeArr = [
     value: 4,
     checked: false
   }
-];
-const renalArr = [
+]);
+const renalArr = reactive([
   {
     name: '就诊过',
     value: 1,
@@ -142,7 +178,7 @@ const renalArr = [
     value: 0,
     checked: false
   }
-];
+]);
 const selectFn = (tagValue, type) => {
   if (type === 'illness') {
     descForm.illnessTime = tagValue;
@@ -151,6 +187,34 @@ const selectFn = (tagValue, type) => {
     descForm.renalFuntion = tagValue;
   }
 };
+
+// 这是回显时，两个按钮的高亮逻辑
+// ？还有没有更好的思路啊
+watch(
+  () => descForm.illnessTime,
+  (newValue, oldValue) => {
+    illnessTimeArr.forEach((item) => {
+      if (item.value == newValue) {
+        item.checked = true;
+      }
+    });
+  }
+);
+
+watch(
+  () => descForm.renalFuntion,
+  (newValue, oldValue) => {
+    renalArr.forEach((item) => {
+      if (item.value == newValue) {
+        item.checked = true;
+      }
+    });
+  }
+);
+
+onMounted(() => {
+  descDataEcho();
+});
 
 onLoad((option) => {
   Object.assign(queryOption, option);

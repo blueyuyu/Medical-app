@@ -5,7 +5,7 @@ import { ref, computed } from 'vue';
 export const useConsultStore = defineStore(
   'consult',
   () => {
-    // 定义 state
+    // 病情描述列表的相关数据
     const consultData = ref({
       illnessDesc: '',
       illnessTime: '',
