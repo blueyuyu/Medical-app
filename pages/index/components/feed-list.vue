@@ -20,12 +20,12 @@
     </view>
     <view class="item-content">
       <h4>夏天不能光脚丫。不能吃冰淇淋？</h4>
-      <view class="item-text">
-        <view class="content-article two-ll">
-          <navigator url="" style="" class="fullText">全文</navigator>
+      <view>
+        <view class="two-ll">
           一次，公社组织社员们卖菜，地里十颗捆的大白菜，别人扛一捆就被压得直喘粗气，爷爷却-
           -咬牙一次扛两捆。一次，公社组织社员们卖菜，地里十颗捆的大白菜，别人扛一捆就被压得直喘粗气，爷爷却- -咬牙一次扛两捆。
         </view>
+        <navigator url="" style="" class="fullText">全文</navigator>
       </view>
 
       <uv-image src="https://cdn.uviewui.com/uview/album/1.jpg" width="80px" height="80px"></uv-image>
@@ -68,22 +68,22 @@ const props = defineProps({
 }
 
 /* float */
-.item-text {
-  display: flex;
-}
-.content-article::before {
-  content: '';
-  display: inline-block;
-  float: right;
-  width: 10px;
-  height: 20px; /*先随便设置一个高度*/
-  background: red;
-  margin-bottom: -24px;
-}
+// .item-text {
+//   display: flex;
+// }
+// .content-article::before {
+//   content: '';
+//   display: inline-block;
+//   float: right;
+//   width: 10px;
+//   height: 20px; /*先随便设置一个高度*/
+//   background: red;
+//   margin-bottom: -24px;
+// }
 
 .fullText {
-  float: right;
-  overflow: hidden;
+  color: $uni-text-color-placeholder;
+  font-size: $uni-font-size-base;
 }
 
 .index-content {
