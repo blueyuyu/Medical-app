@@ -4,6 +4,7 @@ import { type } from '../uni_modules/uni-forms/components/uni-forms/utils';
 
 const whiteList = ['/login/password'];
 
+const baseURL = 'https://consult-api.itheima.net/';
 // baseUrl:https://t1ps66c7na.hk.aircode.run 此基地址不可使用，现更换h5端接口地址
 const http = new Request({
   baseURL: 'https://consult-api.itheima.net/',
@@ -61,4 +62,4 @@ http.interceptors.response.use(
   }
 );
 
-export { http };
+export { http, baseURL };

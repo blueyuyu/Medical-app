@@ -1,0 +1,49 @@
+.room-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* #ifdef H5 */
+  height: calc(100vh - 44px);
+  /* #endif */
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.message-container {
+  padding: 0 30rpx 60rpx;
+  overflow: hidden;
+}
+
+.message-bar {
+  background-color: red;
+  display: flex;
+  padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 40rpx);
+  background-color: #fff;
+
+  :deep(.is-disabled) {
+    background-color: transparent !important;
+  }
+
+  :deep(.uni-easyinput__content-input) {
+    height: 88rpx;
+    padding: 0 44rpx !important;
+    border-radius: 88rpx;
+    color: #3c3e42;
+    font-size: 32rpx;
+    background-color: #f6f6f6;
+  }
+
+  .image-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88rpx;
+    width: 88rpx;
+    margin-left: 30rpx;
+  }
+
+  .uni-button {
+    flex: 1;
+  }
+}
