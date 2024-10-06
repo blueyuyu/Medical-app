@@ -71,5 +71,14 @@
   "vueVersion": "3",
   "optimization": {
     "subPackages": true
+  },
+  "h5": {
+    "sdkConfigs": {
+      "maps": {
+        "qqmap": {
+          "key": "OCVBZ-6BM3B-AMPUJ-NJZOX-7KIP3-VDBSJ"
+        }
+      }
+    }
   }
 }

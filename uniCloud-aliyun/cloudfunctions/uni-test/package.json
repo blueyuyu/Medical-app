@@ -1,0 +1,7 @@
+{
+  "name": "uni-test",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

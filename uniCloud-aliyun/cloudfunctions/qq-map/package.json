@@ -1,0 +1,7 @@
+{
+  "name": "qq-map",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

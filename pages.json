@@ -41,7 +41,6 @@
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
     }
   ],
   "globalStyle": {
@@ -109,6 +108,31 @@
           }
         }
       ]
+    },
+    {
+      "root": "uni_modules/uni-pay/pages",
+      "pages": [{
+          "path": "success/success",
+          "style": {
+            "navigationBarTitleText": "",
+            "backgroundColor": "#F8F8F8"
+          }
+        },
+        {
+          "path": "ad-interactive-webview/ad-interactive-webview",
+          "style": {
+            "navigationBarTitleText": "ad",
+            "backgroundColor": "#F8F8F8"
+          }
+        },
+        {
+          "path": "pay-desk/pay-desk",
+          "style": {
+            "navigationBarTitleText": "收银台",
+            "backgroundColor": "#F8F8F8"
+          }
+        }
+      ]
     }
   ],
   "uniIdRouter": {},
@@ -147,5 +171,4 @@
       }
     ]
   }
-
 }
