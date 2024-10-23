@@ -110,6 +110,29 @@
       ]
     },
     {
+      "root": "subpkg_medicine",
+      "pages": [{
+          "path": "orderDetail/index",
+          "style": {
+            "navigationBarTitleText": "订单详情"
+          }
+        },
+        {
+          "path": "orderList/index",
+          "style": {
+            "navigationBarTitleText": "订单列表"
+          }
+        },
+        {
+          "path": "payment/index",
+          "style": {
+            "navigationBarTitleText": "订单待支付",
+            "navigationStyle": "custom"
+          }
+        }
+      ]
+    },
+    {
       "root": "uni_modules/uni-pay/pages",
       "pages": [{
           "path": "success/success",

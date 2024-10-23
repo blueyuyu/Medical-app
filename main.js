@@ -4,6 +4,7 @@ import { createPinia } from 'pinia';
 // import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
 import '@/utils/utils.js';
+import './mock/index.js';
 
 // #ifndef VUE3
 import Vue from 'vue';

@@ -3,7 +3,7 @@
   <button
     size="mini"
     type="default"
-    :style="{ borderColor: props.borderColor, borderRadius: props.borderRadius, color: props.color, width: props.width, margin: props.margin, fontWeight: props.fontWeight }"
+    :style="{ borderColor: props.borderColor, borderRadius: props.borderRadius, color: props.color, margin: props.margin, fontWeight: props.fontWeight }"
     class="btn"
     hover-class="is-hover"
   >
@@ -18,10 +18,6 @@ const props = defineProps({
     default: '#00c8aa'
   },
   borderRadius: {
-    type: String,
-    default: '24rpx'
-  },
-  borderColor: {
     type: String,
     default: '24rpx'
   },

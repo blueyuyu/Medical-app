@@ -30,3 +30,7 @@ node 版本要求 > 8.9
 测试账号：scobys4865@sandbox.com
 登录密码：111111
 支付密码：111111
+
+
+规定正常的padding:
+40rpx
