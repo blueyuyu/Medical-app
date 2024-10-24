@@ -86,8 +86,30 @@
 <script setup>
 import scrollPage from '@/components/scroll-page.vue';
 import customButton from '@/components/custom-button.vue';
+import { postMockData, getMockAddress, postMockValid } from '@/apis/mock.js';
 
 const leftClick = () => {};
+
+const getFetch = async () => {
+  const res = await getMockAddress({
+    id: 1,
+    name: 'a'
+  });
+  // console.log('[ res ] => ', res);
+
+  const res2 = await postMockData({
+    name: '11',
+    age: 22
+  });
+  console.log('[ res2 ] => ', res2);
+
+  const res3 = await postMockValid({
+    name: 'admin',
+    password: '123'
+  });
+  console.log('[ res3 ] => ', res3);
+};
+getFetch();
 </script>
 
 <style lang="scss">
